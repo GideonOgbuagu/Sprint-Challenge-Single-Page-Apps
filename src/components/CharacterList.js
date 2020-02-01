@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import CharacterCard from "./CharacterCard";
-import { FormGroup, Input, Container } from "reactstrap";
+import { Container } from "reactstrap";
+import SearchForm from "./SearchForm";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -23,11 +24,10 @@ export default function CharacterList() {
 
   useEffect(() => {
     Axios.get(`https://rickandmortyapi.com/api/character/`).then(response => {
-      console.log(response);
+      // console.log(response);
       const result = response.data.results.filter(character =>
         character.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      // console.log("harry potter characters", response);
       setCharacters(result);
     });
   }, [searchTerm]);
@@ -37,19 +37,13 @@ export default function CharacterList() {
 
   return (
     <div>
-      <FormGroup>
-        <Input
-          type='search'
-          name='search'
-          id='exampleSearch'
-          placeholder='Search Character...'
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <Container className='character-list'>
-        {characters.map(item => (
-          <CharacterCard key={item.id} character={item} />
-        ))}
+      <Container>
+        <SearchForm searchInputChange={handleInputChange} />
+        <Container className='character-list'>
+          {characters.map(item => (
+            <CharacterCard key={item.id} character={item} />
+          ))}
+        </Container>
       </Container>
     </div>
   );

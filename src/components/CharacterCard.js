@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  Card,
-  Row,
-  Col,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle
-} from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 
 export default function CharacterCard(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <Card className='card'>
       <CardImg src={props.character.image} alt='Card image cap' />
