@@ -1,7 +1,8 @@
 import React from "react";
 import {
   Card,
-  Container,
+  Row,
+  Col,
   CardImg,
   CardBody,
   CardTitle,
@@ -11,15 +12,15 @@ import {
 export default function CharacterCard(props) {
   console.log(props);
   return (
-    <Container>
-      <Card>
-        <CardImg src={props.character.image} alt='Card image cap' />
-        <CardBody>
-          <CardTitle>Name: {props.character.name}</CardTitle>
-          <CardSubtitle>Gender:{props.character.species}</CardSubtitle>
-          <CardSubtitle>Created:{props.character.created}</CardSubtitle>
-        </CardBody>
-      </Card>
-    </Container>
+    <Card className='card'>
+      <CardImg src={props.character.image} alt='Card image cap' />
+      <CardBody>
+        <CardTitle>
+          <h5>{props.character.name}</h5>
+        </CardTitle>
+        <CardSubtitle>Gender: {props.character.species}</CardSubtitle>
+        <CardSubtitle>Created: {props.character.created}</CardSubtitle>
+      </CardBody>
+    </Card>
   );
 }
